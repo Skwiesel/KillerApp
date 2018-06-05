@@ -1,0 +1,38 @@
+﻿@using Models;
+@model IEnumerable<ItemModel>
+@section Styles {
+    <link rel="stylesheet" type="text/css" href="~/css/style.css">
+}
+
+<div class="GameWindows" id="screen-view" data-url="@Url.Action("PlayerStats", "Home")">
+    <div class="MenuContainer">
+        <div class="TopMenuButtons">
+            <a class="MenuButton InventoryButton" id="inventory-button" data-url="@Url.Action("Inventory", "Home")"><img src="images/Inventory.png"></a>
+            <a class="MenuButton ShopButton" id="shop-button" data-url="@Url.Action("Shop", "Home")"><img src="images/Shop.png"></a>
+            <a class="MenuButton FightButton" id="fight-button" data-url="@Url.Action("Fight,", "Home")"><img src="images/Fight.png"></a>
+        </div>
+        <div class="MenuResult" id="item-partialview">
+
+        </div>
+    </div>
+    <div class="ActualGameScreen" id="game-partialview">
+
+    </div>
+</div>
+
+<script type="text/javascript" src="~/js/partialviewNavigation.js"></script>
+<script>
+    $(document).ready(function () {
+        registerAjaxLink("#inventory-button", "#item-partialview");
+    })
+</script>
+<script>
+    $(document).ready(function () {
+        registerAjaxLink("#shop-button", "#item-partialview");
+    })
+</script>
+<script>
+    $(document).ready(function () {
+        registerAjaxLinkLoad("#screen-view", "#game-partialview");
+    })
+</script>

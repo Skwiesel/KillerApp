@@ -1,0 +1,81 @@
+﻿@model ItemViewModel
+
+@section Styles{
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+}
+
+<form class="AddItemScreen" method="post">
+            <div class="form-group ItemAttr">
+                <label asp-for="Name"></label>
+                <input class="form-control" asp-for="Name" />
+                <span asp-validation-for="Name"></span>
+            </div>
+            <div class="form-group ItemAttr">
+                <label asp-for="BuyPrice"></label>
+                <input class="form-control" asp-for="BuyPrice" />
+                <span asp-validation-for="BuyPrice"></span>
+            </div>
+            <div class="form-group ItemAttr">
+                <label asp-for="CurrentDurability"></label>
+                <input class="form-control" asp-for="CurrentDurability" />
+                <span asp-validation-for="CurrentDurability"></span>
+            </div>
+            <div class="form-group ItemAttr">
+                <label asp-for="Damage"></label>
+                <input class="form-control" asp-for="Damage" />
+                <span asp-validation-for="Damage"></span>
+            </div>
+            <div class="form-group ItemAttr">
+                <label asp-for="Defense"></label>
+                <input class="form-control" asp-for="Defense" />
+                <span asp-validation-for="Defense"></span>
+            </div>
+            <div class="form-group ItemAttr">
+                <label asp-for="HealthUp"></label>
+                <input class="form-control" asp-for="HealthUp" />
+                <span asp-validation-for="HealthUp"></span>
+            </div>
+            <div class="form-group ItemAttr">
+                <label asp-for="ItemLoc"></label>
+                <select name="ItemLocation" class="form-control" asp-for="ItemLoc">
+                    @foreach(Models.eItemLoc loc in Enum.GetValues(typeof(Models.eItemLoc)))
+                    {
+                        <option value=@loc>@loc</option>
+                    }
+                </select>
+                <span asp-validation-for="ItemLoc"></span>
+            </div>
+            <div class="form-group ItemAttr">
+                <label asp-for="ItemType"></label>
+                <select name="ItemType" class="form-control" asp-for="ItemType" >
+                    @foreach(Models.eItemType iType in Enum.GetValues(typeof(Models.eItemType)))
+                    {
+                        <option value=@iType>@iType</option>
+                    }
+                </select>
+                <span asp-validation-for="ItemType"></span>
+            </div>
+            <div class="form-group ItemAttr">
+                <label asp-for="MaxDurability"></label>
+                <input class="form-control" asp-for="MaxDurability" />
+                <span asp-validation-for="MaxDurability"></span>
+            </div>
+            <div class="form-group ItemAttr">
+                <label asp-for="SellPrice"></label>
+                <input class="form-control" asp-for="SellPrice" />
+                <span asp-validation-for="SellPrice"></span>
+            </div>
+            <div class="form-group ItemAttr">
+                <label asp-for="SpeedUp"></label>
+                <input class="form-control" asp-for="SpeedUp" />
+                <span asp-validation-for="SpeedUp"></span>
+            </div>
+            <div class="form-group ItemAttr">
+                <label asp-for="StrengthUp"></label>
+                <input class="form-control" asp-for="StrengthUp" />
+                <span asp-validation-for="StrengthUp"></span>
+            </div>
+            <input class="ItemAttr" id="submitBtn" type="submit" value="Create" />
+
+        </form>
+

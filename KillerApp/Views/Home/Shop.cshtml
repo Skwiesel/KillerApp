@@ -1,0 +1,38 @@
+﻿@using Models;
+@model IEnumerable<ItemModel>
+@section Styles {
+    <link rel="stylesheet" type="text/css" href="~/css/style.css">
+}
+
+<ul class="ItemsList">
+    <li>
+        <ul class="ItemRow">
+            <li class="ItemIcon"><img src="~/images/Armour.png" /></li>
+            <li class="ItemName"><h4 style="height:50px">Shop</h4></li>
+        </ul>
+    </li>
+    @foreach (var item in Model)
+    {
+        <li>
+            <ul class="ItemRow">
+                <li class="ItemIcon"><img src="~/images/Consumable.png" /></li>
+                <li class="ItemName">
+                    <a id="item-button-@item.Id" data-url="@Url.Action("ShopItemInfo", "Home", new { id = item.Id })">
+                        <h4 style="height: 50px;">
+                            @item.Name
+                        </h4>
+                    </a>
+                </li>
+            </ul>
+        </li>
+    }
+</ul>
+
+@foreach (var item in Model)
+{
+    <script>
+    $(document).ready(function () {
+        registerAjaxLink("#item-button-@item.Id", "#item-partialview");
+    })
+    </script>
+}

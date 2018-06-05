@@ -1,0 +1,90 @@
+﻿@using Models;
+@model ItemModel
+@section Styles{
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+}
+
+<ul class="ItemsList">
+    <li>
+        <ul class="ItemList">
+            <li class="ItemRow ItemName"><h4>Id: @Model.Id</h4></li>
+            <li class="ItemRow ItemName"><h4>Name: @Model.Name</h4></li>
+            <li class="ItemRow ItemName"><h4>Item Type: @Model.ItemType</h4></li>
+            @if (Model.ItemType == eItemType.Armour)
+            {
+                <li class="ItemRow ItemName"><h4>Defense: @Model.Defense</h4></li>
+                <li class="ItemRow ItemName"><h4>Durability: @Model.CurrentDurability/@Model.MaxDurability</h4></li>
+            }
+            else if (Model.ItemType == eItemType.Consumable)
+            {
+                <li class="ItemRow ItemName"><h4>Health: @Model.HealthUp</h4></li>
+                <li class="ItemRow ItemName"><h4>Speed: @Model.SpeedUp</h4></li>
+                <li class="ItemRow ItemName"><h4>Strength: @Model.StrengthUp</h4></li>
+            }
+            else if (Model.ItemType == eItemType.Weapon)
+            {
+                <li class="ItemRow ItemName"><h4>Damage: @Model.Damage</h4></li>
+                <li class="ItemRow ItemName"><h4>Durability: @Model.CurrentDurability/@Model.MaxDurability</h4></li>
+            }
+            @if (Model.ItemLoc == eItemLoc.Shop)
+            {
+                <li class="ItemRow ItemName" ><h4>Buy Price: @Model.BuyPrice G</h4></li>
+            }
+            else if (Model.ItemLoc == eItemLoc.Inventory)
+            {
+                <li class="ItemRow ItemName"><h4>Sell Price: @Model.SellPrice G</h4></li>
+            }
+        </ul>
+        <ul class="ItemInteractionButtons">
+            @if (Model.ItemLoc == eItemLoc.Inventory)
+            {
+                <li class="IntItemButton"><a id="useItemBtn" data-url="@Url.Action("Inventory", "Home", new { itemID = Model.Id, actionID = 2 })"><img class="IntItemButton" src="~/images/Use.png" /></a></li>
+                <li class="IntItemButton"><a id="sellItemBtn" data-url="@Url.Action("Inventory", "Home", new { itemID = Model.Id, actionID = 1 })"><img class="IntItemButton" src="~/images/Sell.png" /></a><a class="reloadStats" data-url="@Url.Action("PlayerStats", "Home")"></a></li>
+                <li class="IntItemButton"><a id="repairItemBtn" data-url="@Url.Action("Inventory", "Home", new { itemID = Model.Id, actionID = 3 })"><img class="IntItemButton" src="~/images/Repair.png" /></a></li>
+            }
+            else if (Model.ItemLoc == eItemLoc.Shop)
+            {
+                <li class="IntItemButton"><a id="buyItemBtn" data-url="@Url.Action("Shop", "Home", new { itemID = Model.Id })"><img class="IntItemButton" src="~/images/Buy.png" /></a><a class="reloadStats" data-url="@Url.Action("PlayerStats", "Home")"></a></li>
+            }
+        </ul>
+    </li>
+</ul>
+
+@if (Model.ItemLoc == eItemLoc.Inventory)
+{
+    <script type="text/javascript" src="~/js/buttonItems.js"></script>
+    <script>
+        $(document).ready(function () {
+            registerAjaxLink("#useItemBtn", "#item-partialview");
+        })
+    </script>
+
+    <script type="text/javascript" src="~/js/buttonItems.js"></script>
+    <script>
+        $(document).ready(function () {
+            registerAjaxLink("#sellItemBtn", "#item-partialview");
+        })
+    </script>
+
+    <script type="text/javascript" src="~/js/buttonItems.js"></script>
+    <script>
+        $(document).ready(function () {
+            registerAjaxLink("#repairItemBtn", "#item-partialview");
+        })
+    </script>
+}
+else if (Model.ItemLoc == eItemLoc.Shop)
+{
+    <script type="text/javascript" src="~/js/partialviewNavigation.js"></script>
+    <script>
+        $(document).ready(function () {
+            registerAjaxLink("#buyItemBtn", "#item-partialview");
+        })
+    </script>
+}
+
+    <script>
+        $(document).ready(function () {
+            registerAjaxLink(".reloadStats", "#game-partialview");
+        })
+    </script>

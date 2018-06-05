@@ -1,0 +1,18 @@
+﻿@using Models;
+@model PlayerModel
+@section Styles {
+    <link rel="stylesheet" type="text/css" href="~/css/style.css">
+}
+
+<ul class="StatsPlayer">
+    <li class="HealthBar" id="health-bar"><div id="health" class="currentHealth"></div></li>
+    <li class="StaminaBar"><div id="stamina" class="currentStamina"></div></li>
+    <li class="Money">@Model.Money G</li>
+</ul>
+    
+<script type="text/javascript" src="~/js/Stats.js"></script>
+<script>
+    $(document).ready(function () {
+        loadStats("#health-bar", "#health", @Model.CurrentHealth, @Model.MaxHealth);
+    }
+</script>

@@ -1,0 +1,168 @@
+﻿html,
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0px;
+  padding: 0px;
+  background-color: #333333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  -webkit-user-select: none;
+  /* Chrome all / Safari all */
+  -moz-user-select: none;
+  /* Firefox all */
+  -ms-user-select: none;
+  /* IE 10+ */
+  user-select: none;
+  /* Likely future */
+}
+.GameWindows {
+    width: 90%;
+    height: 90%;
+    background-color: #CECECE;
+    outline: 15px solid #333366;
+    display: grid;
+    grid-area: GameWindows;
+    grid-template-columns: 384px;
+    grid-template-rows: 100%;
+    grid-template-areas: "MenuContainer ActualGameScreen";
+}
+.GameWindows .MenuContainer {
+    background-color: #dedede;
+    border-right: 15px solid #333366;
+    width: 384px;
+    height: 100%;
+    grid-area: MenuContainer;
+    grid-template-areas: "TopMenuButtons" "MenuResult";
+}
+.MenuContainer .TopMenuButtons {
+  height: 143px;
+  border-bottom: 15px solid #CECECE;
+  grid-area: TopMenuButtons;
+  display: grid;
+  grid-template-areas: "InventoryButton InventoryButton FightButton" "ShopButton ShopButton FightButton";
+}
+.GameWindows .ActualGameScreen {
+    display: grid;
+    height: 675px;
+    width: 100%;
+    grid-area: ActualGameScreen;
+}
+.MenuContainer .TopMenuButtons .InventoryButton {
+  grid-area: InventoryButton;
+}
+.MenuContainer .TopMenuButtons .ShopButton {
+  grid-area: ShopButton;
+}
+.MenuContainer .TopMenuButtons .FightButton {
+  grid-area: FightButton;
+}
+.MenuContainer .TopMenuButtons .MenuButton img {
+  width: 100%;
+  height: 100%;
+  -webkit-user-drag: none;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+.MenuContainer .MenuResult {
+  grid-area: MenuResult;
+  overflow-y: scroll;
+  height: 78.5%;
+}
+.GameContainer {
+  background-color: #CECECE;
+  grid-area: GameContainer;
+}
+.ItemsList {
+  margin-top: 15px;
+  list-style-type: none;
+  padding: 0px;
+}
+.ItemRow {
+  position: relative;
+  list-style: none;
+  height: 50px;
+  width: 100%;
+  padding: 0px;
+  display: flex;
+  flex-direction: row;
+}
+a:link, a:visited {
+    text-decoration-line: none;
+    color: #333366;
+}
+a:hover {
+    text-decoration-line: none;
+    color: #6f94d2;
+    cursor: pointer;
+}
+.ItemRow .ItemIcon img {
+  max-height: 40px;
+}
+.partialview-shop {
+    width: 100px;
+    background-color: red;
+}
+.ItemInteractionButtons .IntItemButton:not(:last-child) {
+    border-bottom: none;
+}
+.IntItemButton {
+    right: 1%;
+    position: relative;
+    width: 200px;
+    height: 50px;
+    border-radius: 4px;
+    padding: 0px 0px;
+}
+.IntItemButton:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+.ItemInteractionButtons {
+    list-style: none;
+}
+.StatsPlayer {
+    margin-top: 15px;
+    list-style-type: none;
+    padding-bottom:10px;
+}
+.StatsPlayer .HealthBar{
+    background-color: grey;
+    height: 24px;
+    width: 200px;
+}
+.StatsPlayer .HealthBar #health{
+    background-color: red;
+    height: 24px;
+}
+.StatsPlayer .StaminaBar{
+    background-color: black;
+    height: 24px;
+    width: 200px;
+}
+.StatsPlayer .StaminaBar .stamina{
+    background-color: green;
+    height: 24px;
+}
+.StatsPlayer .Money{
+
+}
+
+.AddItemScreen {
+    width: 75%;
+    height: 75%;
+    background-color: #CECECE;
+    outline: 15px solid #333366;
+}
+.ItemAttr{
+    float:left;
+    width:30%;
+    padding: 2px 2px 2px 2px;
+}
+#submitBtn{
+    margin-top:35px;
+    margin-left:5px;
+}
